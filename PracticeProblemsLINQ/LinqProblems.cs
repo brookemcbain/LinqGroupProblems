@@ -38,10 +38,7 @@ namespace PracticeProblemsLINQ
         {
             var listOfStrings = names.Where(n => n.Equals(names)).ToList();
 
-            return listOfStrings;  
-
-           
-          
+            return listOfStrings;   
         }
         #endregion
 
@@ -50,10 +47,15 @@ namespace PracticeProblemsLINQ
         //Using LINQ, write a method that takes in a list of customers and returns the lone customer who has the name of Mike. 
         public static Customer RunProblem3(List<Customer> customers)
         {
-            //code
+           
+            var newVar = customers.Select(m => m.FirstName == "Mike");
 
-            //return
-            return null;
+            return customers[newVar]; 
+
+            //return nameMike;
+            //customers.Select(m => m.FirstName = "Mike");
+
+
         }
         #endregion
 
@@ -63,13 +65,19 @@ namespace PracticeProblemsLINQ
         //Then, update that customer's first name and last name to completely different names and return the newly updated customer from the method.
         public static Customer RunProblem4(List<Customer> customers)
         {
-            //code
+            var IDThree = customers.Select(m => m.Id = 3).ToList(); 
+            
+            var newName = customers.Where(m => m.FirstName == "Jason" && m.LastName == "Ryan").First();
+            var index = new Customer(3, "Brandon", "Prange"); 
+            customers.IndexOf(index);
 
-            //return
-            return null;
+            if (index != -1)
+                customers[index] = "Brandon Prange";
+
+            return index;  
         }
         #endregion
-
+        
         #region Problem 5
         //(5 points) Problem 5
         //Using LINQ, write a method that calculates the class grade average after dropping the lowest grade for each student.
@@ -78,7 +86,7 @@ namespace PracticeProblemsLINQ
         //Expected output: 86.125
         public static double RunProblem5(List<string> classGrades)
         {
-            //code
+            var removeGrade = classGrades.Remove()
 
             //return
             return 0;
@@ -98,4 +106,3 @@ namespace PracticeProblemsLINQ
         }
         #endregion
     }
-}
