@@ -10,7 +10,7 @@ namespace PracticeProblemsLINQ
     {
         //Weighted project points: /10
         //Project points: /25
-       
+
 
         #region Problem 1 
         //(5 points) Problem 1
@@ -29,7 +29,7 @@ namespace PracticeProblemsLINQ
 
         }
         #endregion
-       
+
 
         #region Problem 2 
         //(5 points) Problem 2
@@ -38,7 +38,7 @@ namespace PracticeProblemsLINQ
         {
             var listOfStrings = names.Where(n => n.Equals(names)).ToList();
 
-            return listOfStrings;   
+            return listOfStrings;
         }
         #endregion
 
@@ -47,10 +47,10 @@ namespace PracticeProblemsLINQ
         //Using LINQ, write a method that takes in a list of customers and returns the lone customer who has the name of Mike. 
         public static Customer RunProblem3(List<Customer> customers)
         {
-           
-            var newVar = customers.Select(m => m.FirstName == "Mike");
 
-            return customers[newVar]; 
+            var newVar = customers.Where(m => m.FirstName == "Mike").First();
+
+            return newVar;
 
             //return nameMike;
             //customers.Select(m => m.FirstName = "Mike");
@@ -65,31 +65,63 @@ namespace PracticeProblemsLINQ
         //Then, update that customer's first name and last name to completely different names and return the newly updated customer from the method.
         public static Customer RunProblem4(List<Customer> customers)
         {
-            var IDThree = customers.Select(m => m.Id = 3).ToList(); 
-            
-            var newName = customers.Where(m => m.FirstName == "Jason" && m.LastName == "Ryan").First();
-            var index = new Customer(3, "Brandon", "Prange"); 
-            customers.IndexOf(index);
+            Customer IDThree = customers.Where(m => m.Id == 3).First();
 
-            if (index != -1)
-                customers[index] = "Brandon Prange";
+            IDThree.FirstName = "Brandon";
+            IDThree.LastName = "Prange";
 
-            return index;  
+            return IDThree;
+
+            // var newName = customers.Where(m => m.FirstName == "Jason" && m.LastName == "Ryan").First();
+            //Customer bPrange = new Customer(3, "Brandon", "Prange"); 
+            //int index = customers.IndexOf(newName);
+
+            //if (index != -1)
+            //{
+            //    Customer example = customers[index];
+            //    customers[index] = bPrange;
+            //}
+
+
         }
         #endregion
-        
+
         #region Problem 5
         //(5 points) Problem 5
         //Using LINQ, write a method that calculates the class grade average after dropping the lowest grade for each student.
         //The method should take in a list of strings of grades (e.g., one string might be "90,100,82,89,55"), 
         //drops the lowest grade from each string, averages the rest of the grades from that string, then averages the averages.
         //Expected output: 86.125
-        public static double RunProblem5(List<string> classGrades)
+        public static void RunProblem5(List<string> classGrades)
         {
-            var removeGrade = classGrades.Remove()
+            
 
-            //return
-            return 0;
+            string minimumValue = classGrades.IndexOf(classGrades.Min()).ToString();
+            classGrades.Remove(minimumValue);
+
+            string firstListItem = classGrades[0];
+
+            
+            List<int> intList = classGrades.ConvertAll<int>(Convert.ToInt32);
+
+            
+
+            foreach(string i in classGrades)
+            {
+
+
+
+            }
+            //convert string to list of integers 
+            //order list of integers from low to high 
+            //remove lowest score from list of integers
+            //add to a variable that you're gonna average/ new list count
+            // add average of all strings and then find that string 
+            ///var avgValue = classGrades.Where(x => x.Average(classGrades)); 
+             
+  
+
+           
         }
         #endregion
 
@@ -106,3 +138,4 @@ namespace PracticeProblemsLINQ
         }
         #endregion
     }
+}

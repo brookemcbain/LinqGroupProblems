@@ -36,7 +36,7 @@ namespace PracticeProblemsLINQ
                 "73,88,83,99,64",
                 "98,100,66,74,55"
             };
-
+            LinqProblems.RunProblem5(classGrades);
 
             //--------------------
             //Bonus Problem 1
