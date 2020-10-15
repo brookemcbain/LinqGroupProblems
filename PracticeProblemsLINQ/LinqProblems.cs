@@ -52,8 +52,6 @@ namespace PracticeProblemsLINQ
 
             return newVar;
 
-            //return nameMike;
-            //customers.Select(m => m.FirstName = "Mike");
 
 
         }
@@ -72,16 +70,7 @@ namespace PracticeProblemsLINQ
 
             return IDThree;
 
-            // var newName = customers.Where(m => m.FirstName == "Jason" && m.LastName == "Ryan").First();
-            //Customer bPrange = new Customer(3, "Brandon", "Prange"); 
-            //int index = customers.IndexOf(newName);
-
-            //if (index != -1)
-            //{
-            //    Customer example = customers[index];
-            //    customers[index] = bPrange;
-            //}
-
+          
 
         }
         #endregion
@@ -92,37 +81,38 @@ namespace PracticeProblemsLINQ
         //The method should take in a list of strings of grades (e.g., one string might be "90,100,82,89,55"), 
         //drops the lowest grade from each string, averages the rest of the grades from that string, then averages the averages.
         //Expected output: 86.125
-        public static void RunProblem5(List<string> classGrades)
+        public static double RunProblem5(List<string> classGrades)
         {
-            
-
-            string minimumValue = classGrades.IndexOf(classGrades.Min()).ToString();
-            classGrades.Remove(minimumValue);
-
+            double singleAverage = 0;
             string firstListItem = classGrades[0];
 
-            
-            List<int> intList = classGrades.ConvertAll<int>(Convert.ToInt32);
 
-            
-
-            foreach(string i in classGrades)
+            foreach (string item in classGrades)
             {
+                List<double> brokenNumbersList = new List<double>();
+                List<double> orderedNumbers = new List<double>();
 
+                string pattern = @",";
+                String[] brokenString = System.Text.RegularExpressions.Regex.Split(item, pattern);
+                foreach (var broken in brokenString)
+                {
+                    Console.WriteLine(broken);
+                    brokenNumbersList.Add(Convert.ToDouble(broken));
+                }
+                orderedNumbers = brokenNumbersList.OrderBy(m => m).ToList();
+                orderedNumbers.RemoveAt(0);
+                foreach (double number in orderedNumbers)
+                {
+                    Console.WriteLine(number);
 
-
+                }
+                singleAverage += orderedNumbers.Average();
             }
-            //convert string to list of integers 
-            //order list of integers from low to high 
-            //remove lowest score from list of integers
-            //add to a variable that you're gonna average/ new list count
-            // add average of all strings and then find that string 
-            ///var avgValue = classGrades.Where(x => x.Average(classGrades)); 
-             
-  
+            return singleAverage / classGrades.Count();
 
-           
-        }
+
+
+      
         #endregion
 
         #region Bonus Problem 1
